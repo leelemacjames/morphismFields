@@ -24,8 +24,6 @@
       --line-solid: #1a4040;
       --accent: #00dca0;
       --accent-2: #00b8d4;
-      --accent-glow: rgba(0, 220, 160, 0.15);
-      --accent-glow-strong: rgba(0, 220, 160, 0.25);
       --warm: #ffd166;
       --coral: #ff6b8a;
       --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -53,22 +51,20 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 800px 600px at 10% 10%, rgba(0, 220, 160, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 600px 800px at 90% 80%, rgba(0, 184, 212, 0.05) 0%, transparent 70%),
-        radial-gradient(ellipse 400px 400px at 50% 40%, rgba(0, 220, 160, 0.03) 0%, transparent 60%);
+        radial-gradient(ellipse 800px 600px at 10% 10%, rgba(0,220,160,.06) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 800px at 90% 80%, rgba(0,184,212,.05) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 400px at 50% 40%, rgba(0,220,160,.03) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
 
     .shell {
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
       width: min(1200px, calc(100% - 40px));
       margin: 0 auto;
       padding: 32px 0 100px;
     }
 
-    /* ── Hero ── */
     .hero {
       display: grid;
       grid-template-columns: 1.3fr 0.9fr;
@@ -85,7 +81,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .card::before {
       content: '';
       position: absolute;
@@ -98,356 +93,214 @@
     .hero-copy { padding: 36px 32px; }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(0, 220, 160, 0.08);
-      border: 1px solid rgba(0, 220, 160, 0.2);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(0,220,160,.08);
+      border: 1px solid rgba(0,220,160,.2);
       color: var(--accent);
-      font-family: var(--mono);
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-family: var(--mono); font-weight: 600; font-size: .78rem;
+      letter-spacing: .06em; text-transform: uppercase;
     }
 
-    h1, h2, h3 {
-      font-family: var(--serif);
-      line-height: 1.15;
-      margin: 0 0 14px;
-      color: var(--ink);
-    }
-
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 14px; color: var(--ink); }
     h1 {
-      font-size: clamp(2rem, 3.4vw, 3.2rem);
-      margin-top: 18px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 70%, var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: clamp(2rem,3.4vw,3.2rem); margin-top: 18px; font-weight: 700;
+      background: linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--accent-2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    h2 {
-      font-size: clamp(1.3rem, 2vw, 1.8rem);
-      font-weight: 600;
-    }
-
-    h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
+    h2 { font-size: clamp(1.3rem,2vw,1.8rem); font-weight: 600; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: var(--accent); }
 
     p { margin: 0 0 14px; color: var(--ink-dim); }
     .lead { font-size: 1.05rem; color: var(--muted); max-width: 62ch; line-height: 1.65; }
-
     .panel { padding: 28px; }
 
     .hero-visual {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 16px;
+      padding: 24px; display: flex; flex-direction: column;
+      justify-content: center; gap: 16px;
     }
 
-    /* ── Buttons & Chips ── */
-    .pill-row, .nav-row, .button-row, .toggle-row, .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .pill-row,.nav-row,.button-row,.toggle-row,.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    button, .chip {
+    button,.chip {
       border: 1px solid var(--line-solid);
-      background: var(--paper-raised);
-      color: var(--ink-dim);
-      border-radius: 999px;
-      padding: 9px 16px;
-      font-family: var(--sans);
-      font-size: 0.88rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.25s ease;
+      background: var(--paper-raised); color: var(--ink-dim);
+      border-radius: 999px; padding: 9px 16px;
+      font-family: var(--sans); font-size: .88rem; font-weight: 500;
+      cursor: pointer; transition: all .25s ease;
     }
-
-    button:hover, .chip:hover {
+    button:hover,.chip:hover {
       transform: translateY(-1px);
-      border-color: rgba(0, 220, 160, 0.3);
-      background: rgba(0, 220, 160, 0.06);
+      border-color: rgba(0,220,160,.3);
+      background: rgba(0,220,160,.06);
       color: var(--ink);
-      box-shadow: 0 4px 14px rgba(0, 220, 160, 0.1);
+      box-shadow: 0 4px 14px rgba(0,220,160,.1);
+    }
+    button.active,.chip.active {
+      background: linear-gradient(135deg,rgba(0,220,160,.15),rgba(0,184,212,.15));
+      color: var(--accent); border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(0,220,160,.12);
     }
 
-    button.active, .chip.active {
-      background: linear-gradient(135deg, rgba(0, 220, 160, 0.15), rgba(0, 184, 212, 0.15));
-      color: var(--accent);
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(0, 220, 160, 0.12);
-    }
-
-    /* ── Quote ── */
     .quote {
       border-left: 3px solid var(--accent);
-      background: rgba(0, 220, 160, 0.04);
+      background: rgba(0,220,160,.04);
       padding: 14px 18px;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       color: var(--ink-dim);
       margin-top: 14px;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 0.98rem;
+      font-family: var(--serif); font-style: italic; font-size: .98rem;
     }
 
-    /* ── SVG Box ── */
     .svgbox {
       width: 100%;
-      background: rgba(0, 220, 160, 0.02);
+      background: rgba(0,220,160,.02);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 12px;
     }
-
     .svgbox svg text { fill: var(--ink-dim); }
-    .svgbox svg line, .svgbox svg path { stroke: var(--accent); }
-    .svgbox svg circle { stroke: var(--accent); }
-    .svgbox svg polygon { fill: var(--accent); }
 
-    /* ── Layout helpers ── */
     .section { margin-top: 24px; display: grid; gap: 20px; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .three { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .mini { padding: 20px; }
     .stack { display: grid; gap: 18px; }
-    .small { color: var(--muted); font-size: 0.92rem; }
+    .small { color: var(--muted); font-size: .92rem; }
 
-    /* ── Badge ── */
     .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(0, 220, 160, 0.08);
-      border: 1px solid rgba(0, 220, 160, 0.15);
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      background: rgba(0,220,160,.08); border: 1px solid rgba(0,220,160,.15);
+      color: var(--accent); font-family: var(--mono);
+      font-size: .76rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 10px;
     }
 
-    /* ── Table ── */
-    .laws table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.94rem;
+    .laws table,.zeta-table table { width: 100%; border-collapse: collapse; font-size: .94rem; }
+    .laws th,.laws td,.zeta-table th,.zeta-table td {
+      padding: 13px 12px; border-bottom: 1px solid var(--line);
+      vertical-align: top; text-align: left;
     }
-
-    .laws th, .laws td {
-      padding: 13px 12px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-      text-align: left;
+    .laws th,.zeta-table th {
+      background: rgba(0,220,160,.05); color: var(--accent);
+      font-family: var(--mono); font-size: .85rem; font-weight: 600; letter-spacing: .03em;
     }
+    .laws td,.zeta-table td { color: var(--ink-dim); }
+    .laws tr:last-child td,.zeta-table tr:last-child td { border-bottom: 0; }
+    .zeta-table td.pi-col { color: var(--warm); font-weight: 600; }
 
-    .laws th {
-      background: rgba(0, 220, 160, 0.05);
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .laws td { color: var(--ink-dim); }
-    .laws tr:last-child td { border-bottom: 0; }
-
-    /* ── Tab panels ── */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* ── Stepper / Steps ── */
     .stepper { display: grid; gap: 10px; margin-top: 10px; }
-
     .step {
-      border: 1px solid var(--line);
-      background: var(--paper-raised);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      border: 1px solid var(--line); background: var(--paper-raised);
+      border-radius: var(--radius-sm); padding: 12px 16px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
-
     .step button { flex-shrink: 0; }
 
-    /* ── Reveal ── */
     .reveal {
-      display: none;
-      margin-top: 10px;
-      padding: 12px 16px;
+      display: none; margin-top: 10px; padding: 12px 16px;
       border-radius: var(--radius-sm);
-      background: rgba(0, 220, 160, 0.04);
-      border: 1px dashed rgba(0, 220, 160, 0.2);
-      width: 100%;
-      color: var(--ink-dim);
+      background: rgba(0,220,160,.04);
+      border: 1px dashed rgba(0,220,160,.2);
+      width: 100%; color: var(--ink-dim);
     }
-
     .reveal.show { display: block; }
 
-    /* ── Slider ── */
     .slider-wrap { display: grid; gap: 8px; margin-top: 14px; }
-
     input[type="range"] {
-      width: 100%;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--line-solid);
-      outline: none;
+      width: 100%; -webkit-appearance: none; appearance: none;
+      height: 6px; border-radius: 3px; background: var(--line-solid); outline: none;
     }
-
     input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(0, 220, 160, 0.4);
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--accent); cursor: pointer;
+      box-shadow: 0 0 12px rgba(0,220,160,.4);
     }
 
-    /* ── Result ── */
     .result {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      background: rgba(0, 220, 160, 0.06);
-      border: 1px solid rgba(0, 220, 160, 0.15);
-      font-weight: 600;
-      color: var(--ink);
+      margin-top: 14px; padding: 16px; border-radius: var(--radius-sm);
+      background: rgba(0,220,160,.06); border: 1px solid rgba(0,220,160,.15);
+      font-weight: 600; color: var(--ink);
+      overflow-x: auto;
     }
 
-    /* ── Flow diagram ── */
     .flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; flex-wrap: wrap; margin-top: 14px;
     }
-
     .flow .box {
-      min-width: 150px;
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      background: var(--paper-raised);
-      text-align: center;
-      color: var(--ink-dim);
-      box-shadow: var(--shadow-sm);
+      min-width: 150px; padding: 16px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); background: var(--paper-raised);
+      text-align: center; color: var(--ink-dim); box-shadow: var(--shadow-sm);
     }
-
     .flow .box strong { color: var(--accent); }
-
-    .arrow {
-      font-size: 1.5rem;
-      color: var(--accent);
-      font-weight: 800;
+    .flow .box.pi-box {
+      border-color: var(--warm);
+      background: rgba(255,209,102,.06);
+      box-shadow: 0 0 24px rgba(255,209,102,.08);
     }
+    .flow .box.pi-box strong { color: var(--warm); }
+    .arrow { font-size: 1.5rem; color: var(--accent); font-weight: 800; }
 
-    /* ── Details ── */
     details {
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      background: var(--paper-raised);
+      border: 1px solid var(--line); border-radius: var(--radius-sm);
+      padding: 14px 16px; background: var(--paper-raised);
     }
-
     details + details { margin-top: 10px; }
     summary { cursor: pointer; font-weight: 600; color: var(--accent); font-family: var(--sans); }
     details p { margin-top: 10px; }
 
-    /* ── Legend ── */
-    .legend {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-top: 8px;
+    .example-item {
+      padding: 10px 14px; border: 1px solid var(--line);
+      border-radius: var(--radius-sm); background: var(--paper-raised);
+      margin-bottom: 8px;
     }
+    .example-item strong { color: var(--accent); }
+    .example-item .ex-detail { color: var(--muted); font-size: .9rem; margin-top: 4px; }
 
-    .dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 6px;
-    }
-
-    /* ── Footer ── */
     .foot {
-      margin-top: 32px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-family: var(--mono);
-      opacity: 0.6;
+      margin-top: 32px; text-align: center; color: var(--muted);
+      font-size: .85rem; font-family: var(--mono); opacity: .6;
     }
 
-    /* ── MathJax colour override ── */
     mjx-container { color: var(--ink) !important; }
 
-    /* ── Morphism SVG overrides ── */
-    #morphismBox svg circle[fill="none"] { stroke: var(--muted) !important; }
-    #morphismBox svg circle[fill="#111"] { fill: var(--accent) !important; }
-    #morphismBox svg line { stroke: var(--accent) !important; }
-    #morphismBox svg path { stroke: var(--muted) !important; }
-    #morphismBox svg polygon { fill: var(--accent) !important; }
-    #morphismBox svg circle[stroke-dasharray] { stroke: var(--accent-2) !important; }
+    #morphismBox svg ellipse { stroke: #6a9999 !important; }
+    #morphismBox svg circle[fill="#00dca0"] { fill: #00dca0 !important; }
+    #morphismBox svg circle[fill="#00b8d4"] { fill: #00b8d4 !important; }
 
-    /* ── Responsive ── */
-    @media (max-width: 920px) {
-      .hero, .two, .three { grid-template-columns: 1fr; }
-    }
+    @media (max-width:920px) { .hero,.two,.three { grid-template-columns: 1fr; } }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
-    .section, .hero { animation: fadeUp 0.6s ease-out both; }
-    .section:nth-child(2) { animation-delay: 0.08s; }
-    .section:nth-child(3) { animation-delay: 0.14s; }
-    .section:nth-child(4) { animation-delay: 0.2s; }
-    .section:nth-child(5) { animation-delay: 0.26s; }
+    .section,.hero { animation: fadeUp .6s ease-out both; }
+    .section:nth-child(2) { animation-delay: .08s; }
+    .section:nth-child(3) { animation-delay: .14s; }
+    .section:nth-child(4) { animation-delay: .2s; }
+    .section:nth-child(5) { animation-delay: .26s; }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════ GLOBAL SVG DEFS ═══════════════════ -->
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
   <defs>
     <marker id="arr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#00dca0"/>
+      <polygon points="0 0,10 4,0 8" fill="#00dca0"/>
     </marker>
     <marker id="arrDim" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#6a9999"/>
+      <polygon points="0 0,10 4,0 8" fill="#6a9999"/>
     </marker>
   </defs>
 </svg>
 
 <div class="shell">
 
-  <!-- ══════════ HERO ══════════ -->
+  <!-- ══ HERO ══ -->
   <section class="hero">
     <div class="card hero-copy">
       <div class="eyebrow">Interactive reflection</div>
@@ -458,11 +311,10 @@
         <button onclick="document.getElementById('series').scrollIntoView()">Infinite series</button>
         <button onclick="document.getElementById('structures').scrollIntoView()">Structures</button>
         <button onclick="document.getElementById('maps').scrollIntoView()">Mappings</button>
-        <button onclick="document.getElementById('bridge').scrollIntoView()">Functor bridge</button>
+        <button onclick="document.getElementById('bridge').scrollIntoView()">The &pi;-bridge</button>
       </div>
       <div class="quote">The objects matter, but the rules they obey and the maps that preserve those rules matter just as much.</div>
     </div>
-
     <div class="card hero-visual">
       <h3>A first idea</h3>
       <div class="svgbox">
@@ -470,15 +322,14 @@
           <rect x="20" y="25" width="120" height="70" rx="18" fill="rgba(0,220,160,.08)" stroke="rgba(0,220,160,.3)"/>
           <rect x="200" y="25" width="120" height="70" rx="18" fill="rgba(0,184,212,.08)" stroke="rgba(0,184,212,.3)"/>
           <rect x="380" y="25" width="120" height="70" rx="18" fill="rgba(0,220,160,.08)" stroke="rgba(0,220,160,.3)"/>
-          <text x="80" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0" font-family="Source Serif 4, serif">Sets</text>
-          <text x="260" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0" font-family="Source Serif 4, serif">Groups</text>
-          <text x="440" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0" font-family="Source Serif 4, serif">Functions</text>
-          <text x="80" y="78" text-anchor="middle" font-size="12" fill="#6a9999" font-family="DM Sans, sans-serif">objects</text>
-          <text x="260" y="78" text-anchor="middle" font-size="12" fill="#6a9999" font-family="DM Sans, sans-serif">structure</text>
-          <text x="440" y="78" text-anchor="middle" font-size="12" fill="#6a9999" font-family="DM Sans, sans-serif">maps</text>
+          <text x="80" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0">Sets</text>
+          <text x="260" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0">Groups</text>
+          <text x="440" y="58" text-anchor="middle" font-size="18" font-weight="700" fill="#e0f0f0">Functions</text>
+          <text x="80" y="78" text-anchor="middle" font-size="12" fill="#6a9999">objects</text>
+          <text x="260" y="78" text-anchor="middle" font-size="12" fill="#6a9999">structure</text>
+          <text x="440" y="78" text-anchor="middle" font-size="12" fill="#6a9999">maps</text>
           <line x1="140" y1="60" x2="197" y2="60" stroke="#00dca0" stroke-width="3" marker-end="url(#arr)"/>
           <line x1="320" y1="60" x2="377" y2="60" stroke="#00dca0" stroke-width="3" marker-end="url(#arr)"/>
-          <!-- bottom dots -->
           <circle cx="60" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
           <circle cx="90" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
           <circle cx="120" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
@@ -488,18 +339,17 @@
           <circle cx="420" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
           <circle cx="450" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
           <circle cx="480" cy="170" r="8" fill="rgba(0,220,160,.15)" stroke="#00dca0" stroke-width="1.5"/>
-          <!-- links -->
           <line x1="60" y1="170" x2="240" y2="170" stroke="#00dca0" stroke-width="1" opacity=".2"/>
           <line x1="90" y1="170" x2="270" y2="170" stroke="#00dca0" stroke-width="1" opacity=".2"/>
           <line x1="120" y1="170" x2="300" y2="170" stroke="#00dca0" stroke-width="1" opacity=".2"/>
-          <text x="260" y="210" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans, sans-serif">The same set viewed through different lenses</text>
+          <text x="260" y="210" text-anchor="middle" font-size="13" fill="#6a9999">The same set viewed through different lenses</text>
         </svg>
       </div>
       <p class="small">The same underlying set can be viewed in different ways depending on which operations and mappings we care about.</p>
     </div>
   </section>
 
-  <!-- ══════════ 1 & 2: NUMBER TYPES + LAWS ══════════ -->
+  <!-- ══ 1 & 2 ══ -->
   <section id="numbers" class="section">
     <div class="two">
       <div class="card panel">
@@ -528,49 +378,43 @@
           <p class="small">This is where infinite series and functions like \(\zeta(s)\) start to matter.</p>
         </div>
       </div>
-
       <div class="card panel laws">
         <div class="badge">2 &middot; Core laws</div>
         <h2>Why algebraic laws matter</h2>
         <table>
-          <thead>
-            <tr><th>Law</th><th>Example</th><th>Why it helps</th></tr>
-          </thead>
+          <thead><tr><th>Law</th><th>Example</th><th>Why it helps</th></tr></thead>
           <tbody>
             <tr><td>Commutative +</td><td>\(a+b=b+a\)</td><td>Order does not affect the sum.</td></tr>
             <tr><td>Associative +</td><td>\((a+b)+c=a+(b+c)\)</td><td>We can regroup safely.</td></tr>
             <tr><td>Commutative &times;</td><td>\(ab=ba\)</td><td>Order does not affect the product.</td></tr>
             <tr><td>Associative &times;</td><td>\((ab)c=a(bc)\)</td><td>Repeated multiplication is well-behaved.</td></tr>
-            <tr><td>Distributive</td><td>\(a(b+c)=ab+ac\)</td><td>Addition and multiplication fit together.</td></tr>
-            <tr><td>Cancellation</td><td>\(a+c=b+c \Rightarrow a=b\)</td><td>Equal additions can be removed from both sides.</td></tr>
+            <tr><td>Distributive</td><td>\(a(b+c)=ab+ac\)</td><td>+ and &times; fit together.</td></tr>
+            <tr><td>Cancellation</td><td>\(a+c=b+c\Rightarrow a=b\)</td><td>Equal additions can be removed.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ 3 & 4: SERIES + TELESCOPING ══════════ -->
+  <!-- ══ 3 & 4 ══ -->
   <section id="series" class="section">
     <div class="two">
       <div class="card panel">
         <div class="badge">3 &middot; Infinite series</div>
-        <h2>Irrationals can arise from infinite sums</h2>
-        <p>Some important real numbers are reached through infinite series. A famous example is the Riemann zeta function</p>
-        <p>\[
-          \zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.
-        \]</p>
-        <p>At \(s=2\), Euler showed that</p>
-        <p>\[
-          \zeta(2)=\frac{\pi^2}{6}.
-        \]</p>
-        <p>This is striking: an infinite rational-looking sum is tied to \(\pi\), a geometric irrational.</p>
-        <div class="quote">The big shift is philosophical as well as technical: a number may be understood not only as a decimal or a point on a line, but as the value of an infinite process.</div>
+        <h2>Even and odd: a surprising asymmetry</h2>
+        <p>The Riemann zeta function is defined by</p>
+        <p>\[\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.\]</p>
+        <p>At <strong style="color:var(--accent)">even</strong> positive integers, Euler found exact closed forms. The simplest is the Basel result:</p>
+        <p>\[\zeta(2)=\frac{\pi^2}{6}.\]</p>
+        <p>Every even value \(\zeta(2n)\) turns out to be a rational multiple of \(\pi^{2n}\). The Bernoulli numbers supply the rational part. \(\pi\) supplies the transcendental part. We will see this bridge in section 10.</p>
+        <p>At <strong style="color:var(--coral)">odd</strong> positive integers the situation is quite different. Ap&eacute;ry proved in 1978 that \(\zeta(3)\) is irrational, but no closed form in terms of \(\pi\) is known. The odd zeta-values remain largely mysterious.</p>
+        <div class="quote">An infinite sum of rational terms can land on a rational multiple of \(\pi^{2n}\) or on something we barely understand, depending on whether the exponent is even or odd.</div>
       </div>
 
       <div class="card panel">
         <div class="badge">4 &middot; Telescoping demo</div>
-        <h2>Respecting order in a finite series</h2>
-        <p>Move the slider to choose \(n\). The page shows how the method of differences makes cancellation visible.</p>
+        <h2>Cancellation in a finite series</h2>
+        <p>Move the slider to choose \(n\). The method of differences makes cancellation visible.</p>
         <div class="slider-wrap">
           <label for="nSlider"><strong style="color:var(--accent)">Choose \(n\):</strong> <span id="nLabel">6</span></label>
           <input id="nSlider" type="range" min="2" max="20" value="6" />
@@ -581,27 +425,27 @@
     </div>
   </section>
 
-  <!-- ══════════ 5: STRUCTURES ══════════ -->
+  <!-- ══ 5 ══ -->
   <section id="structures" class="section">
     <div class="card panel">
       <div class="badge">5 &middot; Structures</div>
       <h2>From school algebra to monoids and groups</h2>
-      <p>At school, we usually learn rules one topic at a time. Undergraduate algebra asks a different question: <em>which collections of objects satisfy which rules?</em></p>
+      <p>At school, we usually learn rules one topic at a time. Undergraduate algebra asks: <em>which collections of objects satisfy which rules?</em></p>
       <div class="three" style="margin-top:14px">
         <div class="mini card">
           <h3>Semigroup</h3>
           <p>An operation that is <strong>associative</strong>.</p>
-          <p class="small">A set where combining any three objects gives the same result no matter how we bracket them.</p>
+          <p class="small">Combining any three objects gives the same result no matter how we bracket.</p>
         </div>
         <div class="mini card">
           <h3>Monoid</h3>
-          <p>A semigroup with an <strong>identity</strong> element.</p>
-          <p class="small">Example: integers under multiplication, where 1 leaves values unchanged.</p>
+          <p>A semigroup with an <strong>identity</strong>.</p>
+          <p class="small">Integers under multiplication: 1 leaves values unchanged.</p>
         </div>
         <div class="mini card">
           <h3>Group</h3>
-          <p>A monoid in which every element has an <strong>inverse</strong>.</p>
-          <p class="small">Example: integers under addition; every number \(a\) has inverse \(-a\).</p>
+          <p>A monoid where every element has an <strong>inverse</strong>.</p>
+          <p class="small">Integers under addition: every \(a\) has inverse \(-a\).</p>
         </div>
       </div>
       <div class="three" style="margin-top:16px">
@@ -612,13 +456,13 @@
         </div>
         <div class="mini card">
           <h3>Ring</h3>
-          <p>A set with both addition and multiplication, tied together by distributivity.</p>
-          <p class="small">Here addition usually forms an abelian group.</p>
+          <p>Two operations tied by distributivity.</p>
+          <p class="small">Addition forms an abelian group; multiplication is associative.</p>
         </div>
         <div class="mini card">
           <h3>Field</h3>
-          <p>A ring in which non-zero elements also have multiplicative inverses.</p>
-          <p class="small">Example: \(\mathbb{Q},\mathbb{R},\mathbb{C}\).</p>
+          <p>A ring where non-zero elements have multiplicative inverses.</p>
+          <p class="small">Example: \(\mathbb{Q},\;\mathbb{R},\;\mathbb{C}\).</p>
         </div>
       </div>
     </div>
@@ -631,43 +475,51 @@
           <div class="step">
             <strong>Integers under addition</strong>
             <button onclick="toggleReveal('r1')">Reveal</button>
-            <div id="r1" class="reveal">This is an <strong style="color:var(--accent)">abelian group</strong>: addition is associative, has identity 0, every integer has an additive inverse, and order does not matter.</div>
+            <div id="r1" class="reveal"><strong style="color:var(--accent)">Abelian group</strong>: associative, identity 0, every integer has additive inverse, order does not matter.</div>
           </div>
           <div class="step">
             <strong>Integers under multiplication</strong>
             <button onclick="toggleReveal('r2')">Reveal</button>
-            <div id="r2" class="reveal">This is a <strong style="color:var(--accent)">monoid</strong>, not a group: multiplication is associative and has identity 1, but most integers do not have multiplicative inverses inside \(\mathbb{Z}\).</div>
+            <div id="r2" class="reveal"><strong style="color:var(--accent)">Monoid</strong>: associative, identity 1, but most integers lack multiplicative inverses in \(\mathbb{Z}\).</div>
           </div>
           <div class="step">
             <strong>Real numbers under addition</strong>
             <button onclick="toggleReveal('r3')">Reveal</button>
-            <div id="r3" class="reveal">This is also an <strong style="color:var(--accent)">abelian group</strong>.</div>
+            <div id="r3" class="reveal">Also an <strong style="color:var(--accent)">abelian group</strong>.</div>
           </div>
           <div class="step">
             <strong>Reals with + and &times;</strong>
             <button onclick="toggleReveal('r4')">Reveal</button>
-            <div id="r4" class="reveal">Together these give a <strong style="color:var(--accent)">field</strong>, since non-zero reals have multiplicative inverses.</div>
+            <div id="r4" class="reveal">A <strong style="color:var(--accent)">field</strong>: non-zero reals have multiplicative inverses.</div>
           </div>
         </div>
       </div>
 
       <div class="card panel">
-        <div class="badge">7 &middot; Reflection</div>
-        <h2>Why name these structures at all?</h2>
-        <p>Because once we name a pattern, we can reuse theorems across many settings. The point is economy of thought.</p>
-        <details open>
-          <summary>High-school reflection</summary>
-          <p>The same number system can feel different depending on which operation we care about. Integers are not a group under multiplication, but they are under addition. So the "thing" is not just the set: it is the set together with a chosen operation.</p>
-        </details>
-        <details>
-          <summary>Undergraduate tee-up</summary>
-          <p>This shift prepares the way for abstract algebra. We stop asking only "what is this number?" and start asking "what kind of algebraic object is this, and which maps preserve its structure?"</p>
-        </details>
+        <div class="badge">7 &middot; Concrete examples</div>
+        <h2>The same set, different structures</h2>
+        <p>The structure depends on which operation we attach. Four cases that make the distinctions tangible.</p>
+        <div class="example-item">
+          <strong>Positive integers under &times;</strong>
+          <div class="ex-detail">Associative, identity 1, but no inverses: there is no positive integer \(n\) with \(3n=1\). A <strong style="color:var(--accent)">monoid</strong>.</div>
+        </div>
+        <div class="example-item">
+          <strong>Rotations of an equilateral triangle</strong>
+          <div class="ex-detail">Three rotations (0&deg;, 120&deg;, 240&deg;). Associative, identity 0&deg;, every rotation undone. A <strong style="color:var(--accent)">group</strong> (cyclic, order 3, abelian).</div>
+        </div>
+        <div class="example-item">
+          <strong>2&times;2 real matrices under &times;</strong>
+          <div class="ex-detail">Associative with identity \(I\), but \(AB\neq BA\) in general and not every matrix is invertible. A non-commutative <strong style="color:var(--accent)">monoid</strong>.</div>
+        </div>
+        <div class="example-item">
+          <strong>Integers mod 5 with + and &times;</strong>
+          <div class="ex-detail">\(\{0,1,2,3,4\}\) with arithmetic mod 5. Every non-zero element has a multiplicative inverse (e.g. \(2\times 3\equiv 1\)). A <strong style="color:var(--accent)">field</strong>, \(\mathbb{F}_5\).</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ 8 & 9: MAPPINGS ══════════ -->
+  <!-- ══ 8 & 9 ══ -->
   <section id="maps" class="section">
     <div class="two">
       <div class="card panel">
@@ -684,78 +536,76 @@
         <div class="svgbox" id="morphismBox" style="min-height:180px"></div>
         <p class="small" id="morphismCaption"></p>
       </div>
-
       <div class="card panel">
         <div class="badge">9 &middot; Composition</div>
         <h2>Why morphisms matter</h2>
-        <p>A morphism is not just any map. It is a map that respects the structure we care about. For groups, that usually means a homomorphism.</p>
-        <p>A group homomorphism \(f\) satisfies</p>
-        <p>\[
-          f(a\star b)=f(a)\diamond f(b).
-        \]</p>
-        <p>So the operation in the source is mirrored by the operation in the target.</p>
+        <p>A morphism is a map that respects structure. For groups, a homomorphism \(f\) satisfies</p>
+        <p>\[f(a\star b)=f(a)\diamond f(b).\]</p>
+        <p>The operation in the source is mirrored by the operation in the target.</p>
         <div class="flow">
           <div class="box">object \(X\)</div>
           <div class="arrow">&rarr;</div>
           <div class="box">object \(Y\)</div>
         </div>
         <div class="flow">
-          <div class="box">morphism \(f\!:\!X\!\to\! Y\)</div>
+          <div class="box">\(f:X\to Y\)</div>
           <div class="arrow">&compfn;</div>
-          <div class="box">morphism \(g\!:\!Y\!\to\! Z\)</div>
+          <div class="box">\(g:Y\to Z\)</div>
           <div class="arrow">=</div>
-          <div class="box">\(g\circ f\!:\!X\!\to\! Z\)</div>
+          <div class="box">\(g\circ f:X\to Z\)</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ 10 & 11: BRIDGE + REFLECTION ══════════ -->
+  <!-- ══ 10 & 11: THE π-BRIDGE ══ -->
   <section id="bridge" class="section">
     <div class="card panel stack">
       <div>
-        <div class="badge">10 &middot; A bridge between two families</div>
-        <h2>From zeta-values to Bernoulli numbers</h2>
-        <p>One classical bridge is</p>
+        <div class="badge">10 &middot; The &pi;-bridge</div>
+        <h2>\(\pi\) as the bridge between zeta-values and Bernoulli numbers</h2>
+        <p>Every even zeta-value factorises into three pieces: a sign, a rational factor built from the Bernoulli number \(B_{2n}\), and a power of \(\pi\). Isolating \(\pi\) as the bridge term:</p>
         <p>\[
-          \zeta(2n)=(-1)^{n+1}\frac{B_{2n}(2\pi)^{2n}}{2(2n)!}.
+          \zeta(2n)\;=\;
+          \underbrace{(-1)^{n+1}\,\frac{B_{2n}}{2\,(2n)!}}_{\text{rational}}\;\times\;
+          \underbrace{(2\pi)^{2n}}_{\color{#ffd166}{\pi\text{-bridge}}}
         \]</p>
-        <p>This relation links even zeta-values to Bernoulli numbers. It is not a full category-theoretic development on its own, but it is a beautiful example of a rule carrying information from one family of mathematical objects to another.</p>
+        <p>The rational part is arithmetic. The \(\pi^{2n}\) part is geometric and transcendental. The formula locks these two worlds together at every even integer.</p>
       </div>
 
       <div class="flow">
         <div class="box">
-          <strong>Family A</strong><br/>
-          zeta-values \(\zeta(2n)\)
+          <strong>Zeta-values</strong><br/>
+          \(\zeta(2),\;\zeta(4),\;\zeta(6),\;\ldots\)
         </div>
-        <div class="arrow">&hArr;</div>
-        <div class="box">
-          <strong>Bridge term</strong><br/>
-          powers of \(\pi^{2n}\), factorials
+        <div class="arrow">&larr;</div>
+        <div class="box pi-box">
+          <strong>\(\pi\)</strong><br/>
+          transcendental bridge
         </div>
-        <div class="arrow">&hArr;</div>
+        <div class="arrow">&rarr;</div>
         <div class="box">
-          <strong>Family B</strong><br/>
-          Bernoulli numbers \(B_{2n}\)
+          <strong>Bernoulli numbers</strong><br/>
+          \(B_2,\;B_4,\;B_6,\;\ldots\)
         </div>
       </div>
 
-      <div class="two">
-        <div class="card mini">
-          <h3>Careful language</h3>
-          <p>At this stage, it is safest to say there is a <strong>structured relationship</strong> or <strong>bridge</strong> between the two families. Calling something a functor requires a precise specification of categories, objects, and morphisms.</p>
+      <div>
+        <h3 style="margin-top:8px">Explore the bridge</h3>
+        <p>Each row shows \(n\), the Bernoulli number \(B_{2n}\), the power of \(\pi\), and the resulting \(\zeta(2n)\).</p>
+        <div class="slider-wrap">
+          <label for="bernSlider"><strong style="color:var(--accent)">Show \(n=1\) to \(n=\)</strong> <span id="bernLabel">5</span></label>
+          <input id="bernSlider" type="range" min="1" max="10" value="5" />
         </div>
-        <div class="card mini">
-          <h3>Why still mention functors?</h3>
-          <p>Because the instinct is right: modern mathematics often tries to understand not isolated formulas, but the ways whole systems correspond.</p>
-        </div>
+        <div class="zeta-table" id="zetaTableWrap" style="margin-top:14px;overflow-x:auto"></div>
       </div>
     </div>
 
     <div class="card panel">
       <div class="badge">11 &middot; Final reflection</div>
       <h2>What begins as number rules turns into a study of relations</h2>
-      <p>The journey starts with familiar algebraic laws, moves through infinite series and special numbers, and arrives at a broader point: mathematics gains power when it studies structure and the mappings that preserve it. School mathematics often asks us to compute; higher mathematics asks us what sort of thing we are computing <em>in</em>, and what kinds of maps make sense there.</p>
+      <p>The journey starts with familiar algebraic laws, moves through infinite series and special numbers, and arrives at a broader point: mathematics gains power when it studies structure and the mappings that preserve it. School mathematics often asks us to compute. Higher mathematics asks what sort of thing we are computing <em>in</em>, and what kinds of maps make sense there.</p>
+      <p>The \(\pi\)-bridge is a case in point. Two apparently separate families of numbers turn out to be locked together by a single transcendental constant. The instinct to look for such correspondences between whole systems, rather than isolated formulas, is exactly the instinct that category theory formalises.</p>
     </div>
   </section>
 
@@ -763,23 +613,23 @@
 </div>
 
 <script>
-  /* ── Tabs ── */
-  document.querySelectorAll('[data-tab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parent = btn.closest('.panel');
-      parent.querySelectorAll('[data-tab]').forEach(b => b.classList.remove('active'));
-      parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      parent.querySelector('#' + btn.dataset.tab).classList.add('active');
-    });
-  });
-
   /* ── Safe MathJax wrapper ── */
   function typeset() {
     if (window.MathJax && typeof MathJax.typesetPromise === 'function') {
-      MathJax.typesetPromise().catch(function(err) { console.warn('MathJax:', err); });
+      MathJax.typesetPromise().catch(function(e) { console.warn('MathJax:', e); });
     }
   }
+
+  /* ── Tabs ── */
+  document.querySelectorAll('[data-tab]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var p = btn.closest('.panel');
+      p.querySelectorAll('[data-tab]').forEach(function(b) { b.classList.remove('active'); });
+      p.querySelectorAll('.tab-panel').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      p.querySelector('#' + btn.dataset.tab).classList.add('active');
+    });
+  });
 
   /* ── Reveal ── */
   function toggleReveal(id) {
@@ -787,27 +637,23 @@
     typeset();
   }
 
-  /* ── Telescoping (fixed LaTeX escaping) ── */
-  const nSlider  = document.getElementById('nSlider');
-  const nLabel   = document.getElementById('nLabel');
-  const tResult  = document.getElementById('telescopingResult');
-  const tSteps   = document.getElementById('telescopingSteps');
+  /* ══ Telescoping ══ */
+  var nSlider = document.getElementById('nSlider');
+  var nLabel  = document.getElementById('nLabel');
+  var tResult = document.getElementById('telescopingResult');
+  var tSteps  = document.getElementById('telescopingSteps');
 
   function renderTelescoping(n) {
     nLabel.textContent = n;
-
-    // Build step cards
-    const limit = Math.min(n, 6);
-    let stepsHTML = '';
-    for (let r = 1; r <= limit; r++) {
-      stepsHTML += '<div class="step"><strong>Step ' + r + ':</strong> '
-        + '\\(\\frac{1}{' + r + '\\cdot' + (r+1) + '}'
-        + '=\\frac{1}{' + r + '}-\\frac{1}{' + (r+1) + '}\\)</div>';
+    var lim = Math.min(n, 6), html = '';
+    for (var r = 1; r <= lim; r++) {
+      html += '<div class="step"><strong>Step ' + r + ':</strong> '
+        + '\\(\\dfrac{1}{' + r + '\\cdot' + (r+1) + '}'
+        + '=\\dfrac{1}{' + r + '}-\\dfrac{1}{' + (r+1) + '}\\)</div>';
     }
-    if (n > 6) stepsHTML += '<div class="step" style="color:var(--muted)">&#8230; and so on up to \\(r=' + n + '\\)</div>';
-    tSteps.innerHTML = stepsHTML;
+    if (n > 6) html += '<div class="step" style="color:var(--muted)">&#8230; continuing to \\(r=' + n + '\\)</div>';
+    tSteps.innerHTML = html;
 
-    // Build result
     tResult.innerHTML =
       '\\[\\sum_{r=1}^{' + n + '}\\frac{1}{r(r+1)}'
       + '=\\left(1-\\frac{1}{2}\\right)'
@@ -815,28 +661,68 @@
       + '+\\cdots'
       + '+\\left(\\frac{1}{' + n + '}-\\frac{1}{' + (n+1) + '}\\right)'
       + '=1-\\frac{1}{' + (n+1) + '}'
-      + '=\\frac{' + n + '}{' + (n+1) + '}.\\]';
-
+      + '=\\frac{' + n + '}{' + (n+1) + '}\\]';
     typeset();
   }
 
-  nSlider.addEventListener('input', e => renderTelescoping(Number(e.target.value)));
+  nSlider.addEventListener('input', function(e) { renderTelescoping(Number(e.target.value)); });
 
-  /* Wait for MathJax to be ready before first render */
-  if (document.readyState === 'complete') {
-    renderTelescoping(Number(nSlider.value));
-  } else {
-    window.addEventListener('load', function() {
-      /* Small delay to let MathJax initialise after load */
-      setTimeout(function() { renderTelescoping(Number(nSlider.value)); }, 300);
-    });
+  /* ══ Bernoulli / Zeta table ══ */
+  var BD = [
+    {n:1,  b:'\\tfrac{1}{6}'},
+    {n:2,  b:'-\\tfrac{1}{30}'},
+    {n:3,  b:'\\tfrac{1}{42}'},
+    {n:4,  b:'-\\tfrac{1}{30}'},
+    {n:5,  b:'\\tfrac{5}{66}'},
+    {n:6,  b:'-\\tfrac{691}{2730}'},
+    {n:7,  b:'\\tfrac{7}{6}'},
+    {n:8,  b:'-\\tfrac{3617}{510}'},
+    {n:9,  b:'\\tfrac{43867}{798}'},
+    {n:10, b:'-\\tfrac{174611}{330}'}
+  ];
+  var ZV = [
+    '\\dfrac{\\pi^{2}}{6}',
+    '\\dfrac{\\pi^{4}}{90}',
+    '\\dfrac{\\pi^{6}}{945}',
+    '\\dfrac{\\pi^{8}}{9450}',
+    '\\dfrac{\\pi^{10}}{93555}',
+    '\\dfrac{691\\,\\pi^{12}}{638512875}',
+    '\\dfrac{2\\,\\pi^{14}}{18243225}',
+    '\\dfrac{3617\\,\\pi^{16}}{325641566250}',
+    '\\dfrac{43867\\,\\pi^{18}}{38979295480125}',
+    '\\dfrac{174611\\,\\pi^{20}}{1531329465290625}'
+  ];
+
+  var bernSlider = document.getElementById('bernSlider');
+  var bernLabel  = document.getElementById('bernLabel');
+  var zetaWrap   = document.getElementById('zetaTableWrap');
+
+  function renderZetaTable(maxN) {
+    bernLabel.textContent = maxN;
+    var h = '<table><thead><tr>'
+      + '<th>\\(n\\)</th>'
+      + '<th>\\(B_{2n}\\)</th>'
+      + '<th style="color:#ffd166">\\(\\pi\\) power</th>'
+      + '<th>\\(\\zeta(2n)\\)</th>'
+      + '</tr></thead><tbody>';
+    for (var i = 0; i < maxN; i++) {
+      h += '<tr><td>' + BD[i].n + '</td>'
+        + '<td>\\(' + BD[i].b + '\\)</td>'
+        + '<td class="pi-col">\\((2\\pi)^{' + (2*BD[i].n) + '}\\)</td>'
+        + '<td>\\(' + ZV[i] + '\\)</td></tr>';
+    }
+    h += '</tbody></table>';
+    zetaWrap.innerHTML = h;
+    typeset();
   }
 
-  /* ── Morphism diagrams (using global marker defs) ── */
-  const morphismData = {
+  bernSlider.addEventListener('input', function(e) { renderZetaTable(Number(e.target.value)); });
+
+  /* ══ Morphism diagrams ══ */
+  var MD = {
     epi: {
-      caption: 'Epimorphism (surjective): every target element is hit. Two source elements can map to the same target.',
-      svg: '<svg viewBox="0 0 500 220" width="100%" aria-label="Epimorphism diagram">'
+      caption: 'Epimorphism (surjective): every target element is hit. Multiple source elements can map to the same target.',
+      svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="65" ry="55" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="55" ry="45" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="115" cy="85" r="6" fill="#00dca0"/><circle cx="115" cy="135" r="6" fill="#00dca0"/><circle cx="150" cy="110" r="6" fill="#00dca0"/>'
@@ -844,26 +730,24 @@
         + '<line x1="121" y1="85" x2="364" y2="90" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="121" y1="135" x2="364" y2="130" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="156" y1="110" x2="364" y2="130" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)" opacity=".5"/>'
-        + '<text x="130" y="185" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans">source</text>'
-        + '<text x="370" y="175" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans">target</text>'
-        + '</svg>'
+        + '<text x="130" y="185" text-anchor="middle" font-size="13" fill="#6a9999">source</text>'
+        + '<text x="370" y="175" text-anchor="middle" font-size="13" fill="#6a9999">target</text></svg>'
     },
     mono: {
       caption: 'Monomorphism (injective): different source elements stay different. The target may have unhit elements.',
-      svg: '<svg viewBox="0 0 500 220" width="100%" aria-label="Monomorphism diagram">'
+      svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="55" ry="45" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="65" ry="55" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="130" cy="90" r="6" fill="#00dca0"/><circle cx="130" cy="130" r="6" fill="#00dca0"/>'
         + '<circle cx="355" cy="85" r="6" fill="#00b8d4"/><circle cx="355" cy="125" r="6" fill="#00b8d4"/><circle cx="395" cy="105" r="6" fill="#6a9999" opacity=".4"/>'
         + '<line x1="136" y1="90" x2="349" y2="85" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="136" y1="130" x2="349" y2="125" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
-        + '<text x="130" y="175" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans">source</text>'
-        + '<text x="370" y="185" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans">target</text>'
-        + '</svg>'
+        + '<text x="130" y="175" text-anchor="middle" font-size="13" fill="#6a9999">source</text>'
+        + '<text x="370" y="185" text-anchor="middle" font-size="13" fill="#6a9999">target</text></svg>'
     },
     iso: {
-      caption: 'Isomorphism: bijective and structure-preserving. The two objects are "the same" for structural purposes.',
-      svg: '<svg viewBox="0 0 500 220" width="100%" aria-label="Isomorphism diagram">'
+      caption: 'Isomorphism: bijective and structure-preserving. The two objects are structurally identical.',
+      svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="60" ry="50" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="60" ry="50" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="130" cy="85" r="6" fill="#00dca0"/><circle cx="130" cy="135" r="6" fill="#00dca0"/>'
@@ -872,48 +756,52 @@
         + '<line x1="136" y1="135" x2="364" y2="135" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="364" y1="88" x2="136" y2="88" stroke="#00b8d4" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity=".5"/>'
         + '<line x1="364" y1="138" x2="136" y2="138" stroke="#00b8d4" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity=".5"/>'
-        + '<text x="250" y="195" text-anchor="middle" font-size="13" fill="#6a9999" font-family="DM Sans">bijection with inverse</text>'
-        + '</svg>'
+        + '<text x="250" y="195" text-anchor="middle" font-size="13" fill="#6a9999">bijection with inverse</text></svg>'
     },
     endo: {
       caption: 'Endomorphism: a structure-preserving map from an object to itself. Not necessarily invertible.',
-      svg: '<svg viewBox="0 0 500 220" width="100%" aria-label="Endomorphism diagram">'
+      svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="250" cy="110" rx="80" ry="60" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="220" cy="90" r="6" fill="#00dca0"/><circle cx="220" cy="130" r="6" fill="#00dca0"/><circle cx="280" cy="110" r="6" fill="#00b8d4"/>'
         + '<line x1="226" y1="90" x2="274" y2="108" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="226" y1="130" x2="274" y2="112" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
-        + '<path d="M330 72 C400 30, 430 90, 368 138" fill="none" stroke="#6a9999" stroke-width="4" stroke-linecap="round" marker-end="url(#arrDim)"/>'
-        + '<text x="415" y="80" font-size="13" fill="#6a9999" font-family="DM Sans">self-map</text>'
-        + '</svg>'
+        + '<path d="M330 72 C400 30,430 90,368 138" fill="none" stroke="#6a9999" stroke-width="4" stroke-linecap="round" marker-end="url(#arrDim)"/>'
+        + '<text x="415" y="80" font-size="13" fill="#6a9999">self-map</text></svg>'
     },
     auto: {
       caption: 'Automorphism: a bijective endomorphism. A reversible symmetry of the object with itself.',
-      svg: '<svg viewBox="0 0 500 220" width="100%" aria-label="Automorphism diagram">'
+      svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="250" cy="110" rx="80" ry="60" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="220" cy="85" r="6" fill="#00dca0"/><circle cx="220" cy="135" r="6" fill="#00dca0"/>'
         + '<circle cx="280" cy="85" r="6" fill="#00b8d4"/><circle cx="280" cy="135" r="6" fill="#00b8d4"/>'
         + '<line x1="226" y1="85" x2="274" y2="135" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
         + '<line x1="226" y1="135" x2="274" y2="85" stroke="#00dca0" stroke-width="2" marker-end="url(#arr)"/>'
-        + '<path d="M330 72 C400 30, 430 90, 368 138" fill="none" stroke="#6a9999" stroke-width="4" stroke-linecap="round" marker-end="url(#arrDim)"/>'
-        + '<path d="M330 148 C400 190, 430 130, 368 82" fill="none" stroke="#00b8d4" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" marker-end="url(#arr)" opacity=".4"/>'
-        + '<text x="420" y="80" font-size="13" fill="#6a9999" font-family="DM Sans">bijective</text>'
-        + '<text x="420" y="150" font-size="12" fill="#00b8d4" font-family="DM Sans" opacity=".6">inverse</text>'
-        + '</svg>'
+        + '<path d="M330 72 C400 30,430 90,368 138" fill="none" stroke="#6a9999" stroke-width="4" stroke-linecap="round" marker-end="url(#arrDim)"/>'
+        + '<path d="M330 148 C400 190,430 130,368 82" fill="none" stroke="#00b8d4" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" marker-end="url(#arr)" opacity=".4"/>'
+        + '<text x="420" y="80" font-size="13" fill="#6a9999">bijective</text>'
+        + '<text x="420" y="150" font-size="12" fill="#00b8d4" opacity=".6">inverse</text></svg>'
     }
   };
 
-  const morphismBox     = document.getElementById('morphismBox');
-  const morphismCaption = document.getElementById('morphismCaption');
-  const morphismBtns    = document.querySelectorAll('#morphismButtons button');
+  var mBox = document.getElementById('morphismBox');
+  var mCap = document.getElementById('morphismCaption');
+  var mBtns = document.querySelectorAll('#morphismButtons button');
 
-  function setMap(key) {
-    morphismBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.map === key));
-    morphismBox.innerHTML = morphismData[key].svg;
-    morphismCaption.textContent = morphismData[key].caption;
+  function setMap(k) {
+    mBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.map === k); });
+    mBox.innerHTML = MD[k].svg;
+    mCap.textContent = MD[k].caption;
   }
-
-  morphismBtns.forEach(btn => btn.addEventListener('click', () => setMap(btn.dataset.map)));
+  mBtns.forEach(function(b) { b.addEventListener('click', function() { setMap(b.dataset.map); }); });
   setMap('epi');
+
+  /* ══ Initial renders ══ */
+  function init() {
+    renderTelescoping(Number(nSlider.value));
+    renderZetaTable(Number(bernSlider.value));
+  }
+  if (document.readyState === 'complete') { init(); }
+  else { window.addEventListener('load', function() { setTimeout(init, 400); }); }
 </script>
 </body>
 </html>
