@@ -14,95 +14,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1a1e;
-      --paper: #0f2328;
-      --paper-raised: #132e34;
-      --ink: #e0f0f0;
-      --ink-dim: #8fb8b8;
-      --muted: #6a9999;
-      --line: rgba(0, 220, 180, 0.12);
-      --line-solid: #1a4040;
-      --accent: #00dca0;
-      --accent-2: #00b8d4;
-      --warm: #ffd166;
-      --coral: #ff6b8a;
-      --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
-      --radius: 16px;
-      --radius-sm: 10px;
+      --bg: #0b1a1e; --paper: #0f2328; --paper-raised: #132e34;
+      --ink: #e0f0f0; --ink-dim: #8fb8b8; --muted: #6a9999;
+      --line: rgba(0,220,180,.12); --line-solid: #1a4040;
+      --accent: #00dca0; --accent-2: #00b8d4;
+      --warm: #ffd166; --coral: #ff6b8a;
+      --shadow: 0 12px 40px rgba(0,0,0,.4); --shadow-sm: 0 4px 16px rgba(0,0,0,.3);
+      --radius: 16px; --radius-sm: 10px;
       --serif: 'Source Serif 4', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
       --mono: 'JetBrains Mono', monospace;
     }
-
     * { box-sizing: border-box; margin: 0; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: var(--sans);
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: var(--sans); color: var(--ink); background: var(--bg);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
-
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background:
         radial-gradient(ellipse 800px 600px at 10% 10%, rgba(0,220,160,.06) 0%, transparent 70%),
-        radial-gradient(ellipse 600px 800px at 90% 80%, rgba(0,184,212,.05) 0%, transparent 70%),
-        radial-gradient(ellipse 400px 400px at 50% 40%, rgba(0,220,160,.03) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
+        radial-gradient(ellipse 600px 800px at 90% 80%, rgba(0,184,212,.05) 0%, transparent 70%);
     }
-
     .shell {
       position: relative; z-index: 1;
-      width: min(1200px, calc(100% - 40px));
-      margin: 0 auto;
-      padding: 32px 0 100px;
+      width: min(1200px, calc(100% - 40px)); margin: 0 auto; padding: 32px 0 100px;
     }
-
     .hero {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 20px;
-      align-items: stretch;
-      margin-bottom: 28px;
+      display: grid; grid-template-columns: 1.3fr .9fr; gap: 20px;
+      align-items: stretch; margin-bottom: 28px;
     }
-
+    /* ── Card: use clip-path for radius so inner content can overflow-x ── */
     .card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow-sm);
       position: relative;
-      overflow: hidden;
     }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
+    .card>.top-line {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
-      opacity: 0.5;
+      opacity: .5; border-radius: var(--radius) var(--radius) 0 0;
     }
-
     .hero-copy { padding: 36px 32px; }
-
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px; border-radius: 999px;
-      background: rgba(0,220,160,.08);
-      border: 1px solid rgba(0,220,160,.2);
-      color: var(--accent);
-      font-family: var(--mono); font-weight: 600; font-size: .78rem;
-      letter-spacing: .06em; text-transform: uppercase;
+      background: rgba(0,220,160,.08); border: 1px solid rgba(0,220,160,.2);
+      color: var(--accent); font-family: var(--mono); font-weight: 600;
+      font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
     }
-
-    h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 14px; color: var(--ink); }
+    h1,h2,h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 14px; color: var(--ink); }
     h1 {
       font-size: clamp(2rem,3.4vw,3.2rem); margin-top: 18px; font-weight: 700;
       background: linear-gradient(135deg,#fff 30%,var(--accent) 70%,var(--accent-2));
@@ -110,30 +72,19 @@
     }
     h2 { font-size: clamp(1.3rem,2vw,1.8rem); font-weight: 600; }
     h3 { font-size: 1.05rem; font-weight: 600; color: var(--accent); }
-
     p { margin: 0 0 14px; color: var(--ink-dim); }
     .lead { font-size: 1.05rem; color: var(--muted); max-width: 62ch; line-height: 1.65; }
     .panel { padding: 28px; }
-
-    .hero-visual {
-      padding: 24px; display: flex; flex-direction: column;
-      justify-content: center; gap: 16px;
-    }
-
+    .hero-visual { padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
     .pill-row,.nav-row,.button-row,.toggle-row,.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
-
     button,.chip {
-      border: 1px solid var(--line-solid);
-      background: var(--paper-raised); color: var(--ink-dim);
-      border-radius: 999px; padding: 9px 16px;
-      font-family: var(--sans); font-size: .88rem; font-weight: 500;
-      cursor: pointer; transition: all .25s ease;
+      border: 1px solid var(--line-solid); background: var(--paper-raised); color: var(--ink-dim);
+      border-radius: 999px; padding: 9px 16px; font-family: var(--sans); font-size: .88rem;
+      font-weight: 500; cursor: pointer; transition: all .25s ease;
     }
     button:hover,.chip:hover {
-      transform: translateY(-1px);
-      border-color: rgba(0,220,160,.3);
-      background: rgba(0,220,160,.06);
-      color: var(--ink);
+      transform: translateY(-1px); border-color: rgba(0,220,160,.3);
+      background: rgba(0,220,160,.06); color: var(--ink);
       box-shadow: 0 4px 14px rgba(0,220,160,.1);
     }
     button.active,.chip.active {
@@ -141,56 +92,42 @@
       color: var(--accent); border-color: var(--accent);
       box-shadow: 0 0 20px rgba(0,220,160,.12);
     }
-
     .quote {
-      border-left: 3px solid var(--accent);
-      background: rgba(0,220,160,.04);
-      padding: 14px 18px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      color: var(--ink-dim);
-      margin-top: 14px;
-      font-family: var(--serif); font-style: italic; font-size: .98rem;
+      border-left: 3px solid var(--accent); background: rgba(0,220,160,.04);
+      padding: 14px 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--ink-dim); margin-top: 14px; font-family: var(--serif);
+      font-style: italic; font-size: .98rem;
     }
-
     .svgbox {
-      width: 100%;
-      background: rgba(0,220,160,.02);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 12px;
+      width: 100%; background: rgba(0,220,160,.02); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 12px;
     }
     .svgbox svg text { fill: var(--ink-dim); }
-
     .section { margin-top: 24px; display: grid; gap: 20px; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .three { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .mini { padding: 20px; }
     .stack { display: grid; gap: 18px; }
     .small { color: var(--muted); font-size: .92rem; }
-
     .badge {
       display: inline-block; padding: 4px 10px; border-radius: 999px;
       background: rgba(0,220,160,.08); border: 1px solid rgba(0,220,160,.15);
-      color: var(--accent); font-family: var(--mono);
-      font-size: .76rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 10px;
+      color: var(--accent); font-family: var(--mono); font-size: .76rem;
+      font-weight: 600; letter-spacing: .04em; margin-bottom: 10px;
     }
-
     .laws table,.zeta-table table { width: 100%; border-collapse: collapse; font-size: .94rem; }
     .laws th,.laws td,.zeta-table th,.zeta-table td {
-      padding: 13px 12px; border-bottom: 1px solid var(--line);
-      vertical-align: top; text-align: left;
+      padding: 13px 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left;
     }
     .laws th,.zeta-table th {
-      background: rgba(0,220,160,.05); color: var(--accent);
-      font-family: var(--mono); font-size: .85rem; font-weight: 600; letter-spacing: .03em;
+      background: rgba(0,220,160,.05); color: var(--accent); font-family: var(--mono);
+      font-size: .85rem; font-weight: 600; letter-spacing: .03em;
     }
     .laws td,.zeta-table td { color: var(--ink-dim); }
     .laws tr:last-child td,.zeta-table tr:last-child td { border-bottom: 0; }
     .zeta-table td.pi-col { color: var(--warm); font-weight: 600; }
-
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-
     .stepper { display: grid; gap: 10px; margin-top: 10px; }
     .step {
       border: 1px solid var(--line); background: var(--paper-raised);
@@ -198,35 +135,27 @@
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
     .step button { flex-shrink: 0; }
-
     .reveal {
-      display: none; margin-top: 10px; padding: 12px 16px;
-      border-radius: var(--radius-sm);
-      background: rgba(0,220,160,.04);
-      border: 1px dashed rgba(0,220,160,.2);
+      display: none; margin-top: 10px; padding: 12px 16px; border-radius: var(--radius-sm);
+      background: rgba(0,220,160,.04); border: 1px dashed rgba(0,220,160,.2);
       width: 100%; color: var(--ink-dim);
     }
     .reveal.show { display: block; }
-
     .slider-wrap { display: grid; gap: 8px; margin-top: 14px; }
     input[type="range"] {
       width: 100%; -webkit-appearance: none; appearance: none;
       height: 6px; border-radius: 3px; background: var(--line-solid); outline: none;
     }
     input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none; appearance: none;
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--accent); cursor: pointer;
+      -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+      border-radius: 50%; background: var(--accent); cursor: pointer;
       box-shadow: 0 0 12px rgba(0,220,160,.4);
     }
-
     .result {
       margin-top: 14px; padding: 16px; border-radius: var(--radius-sm);
       background: rgba(0,220,160,.06); border: 1px solid rgba(0,220,160,.15);
-      font-weight: 600; color: var(--ink);
-      overflow-x: auto;
+      font-weight: 600; color: var(--ink); overflow-x: auto;
     }
-
     .flow {
       display: flex; align-items: center; justify-content: center;
       gap: 12px; flex-wrap: wrap; margin-top: 14px;
@@ -238,42 +167,50 @@
     }
     .flow .box strong { color: var(--accent); }
     .flow .box.pi-box {
-      border-color: var(--warm);
-      background: rgba(255,209,102,.06);
+      border-color: var(--warm); background: rgba(255,209,102,.06);
       box-shadow: 0 0 24px rgba(255,209,102,.08);
     }
     .flow .box.pi-box strong { color: var(--warm); }
     .arrow { font-size: 1.5rem; color: var(--accent); font-weight: 800; }
-
     details {
       border: 1px solid var(--line); border-radius: var(--radius-sm);
       padding: 14px 16px; background: var(--paper-raised);
     }
     details + details { margin-top: 10px; }
-    summary { cursor: pointer; font-weight: 600; color: var(--accent); font-family: var(--sans); }
+    summary { cursor: pointer; font-weight: 600; color: var(--accent); }
     details p { margin-top: 10px; }
-
     .example-item {
-      padding: 10px 14px; border: 1px solid var(--line);
-      border-radius: var(--radius-sm); background: var(--paper-raised);
-      margin-bottom: 8px;
+      padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      background: var(--paper-raised); margin-bottom: 8px;
     }
     .example-item strong { color: var(--accent); }
     .example-item .ex-detail { color: var(--muted); font-size: .9rem; margin-top: 4px; }
+
+    /* motivating equation highlight */
+    .eq-motiv {
+      display: inline-block; padding: 3px 10px; border-radius: 8px;
+      background: rgba(0,220,160,.06); border: 1px solid rgba(0,220,160,.15);
+      margin: 4px 0 8px;
+    }
+
+    /* even/odd mini table */
+    .eo-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;
+    }
+    .eo-card {
+      padding: 14px; border-radius: var(--radius-sm);
+      border: 1px solid var(--line); background: var(--paper-raised);
+    }
+    .eo-card h3 { margin-bottom: 8px; }
+    .eo-card .eo-val { font-size: .92rem; color: var(--ink-dim); margin-bottom: 4px; }
 
     .foot {
       margin-top: 32px; text-align: center; color: var(--muted);
       font-size: .85rem; font-family: var(--mono); opacity: .6;
     }
-
     mjx-container { color: var(--ink) !important; }
-
     #morphismBox svg ellipse { stroke: #6a9999 !important; }
-    #morphismBox svg circle[fill="#00dca0"] { fill: #00dca0 !important; }
-    #morphismBox svg circle[fill="#00b8d4"] { fill: #00b8d4 !important; }
-
-    @media (max-width:920px) { .hero,.two,.three { grid-template-columns: 1fr; } }
-
+    @media (max-width:920px) { .hero,.two,.three,.eo-grid { grid-template-columns: 1fr; } }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -303,9 +240,10 @@
   <!-- ══ HERO ══ -->
   <section class="hero">
     <div class="card hero-copy">
+      <span class="top-line"></span>
       <div class="eyebrow">Interactive reflection</div>
       <h1>From familiar number rules to the first foothills of category theory</h1>
-      <p class="lead">This page starts with the kind of questions a strong high-school student might ask. What sorts of numbers are there? What rules do they obey? Why do maps between structures matter? It then gently turns toward the undergraduate language of monoids, groups, morphisms, and functors.</p>
+      <p class="lead">What sorts of numbers are there? What rules do they obey? Why do maps between structures matter? This page walks from high-school algebra toward the undergraduate language of monoids, groups, morphisms, and functors.</p>
       <div class="button-row nav-row" style="margin-top:6px">
         <button onclick="document.getElementById('numbers').scrollIntoView()">Number types</button>
         <button onclick="document.getElementById('series').scrollIntoView()">Infinite series</button>
@@ -316,6 +254,7 @@
       <div class="quote">The objects matter, but the rules they obey and the maps that preserve those rules matter just as much.</div>
     </div>
     <div class="card hero-visual">
+      <span class="top-line"></span>
       <h3>A first idea</h3>
       <div class="svgbox">
         <svg viewBox="0 0 520 260" width="100%" aria-label="Three linked categories">
@@ -349,36 +288,61 @@
     </div>
   </section>
 
-  <!-- ══ 1 & 2 ══ -->
+  <!-- ══ 1 & 2: NUMBER TYPES + LAWS ══ -->
   <section id="numbers" class="section">
     <div class="two">
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">1 &middot; Number types</div>
-        <h2>What changes as our number systems grow?</h2>
+        <h2>Each new equation forces a larger system</h2>
         <div class="tabs" role="tablist">
-          <button class="active" data-tab="nat">Naturals</button>
-          <button data-tab="int">Integers</button>
-          <button data-tab="rat">Rationals</button>
-          <button data-tab="real">Reals</button>
+          <button class="active" data-tab="nat">\(\mathbb{N}\)</button>
+          <button data-tab="int">\(\mathbb{Z}\)</button>
+          <button data-tab="rat">\(\mathbb{Q}\)</button>
+          <button data-tab="real">\(\mathbb{R}\)</button>
+          <button data-tab="cplx">\(\mathbb{C}\)</button>
+          <button data-tab="gauss">\(\mathbb{Z}[i]\)</button>
+          <button data-tab="surd">\(\mathbb{Z}[\sqrt{d}]\)</button>
         </div>
         <div id="nat" class="tab-panel active">
-          <p><strong style="color:var(--accent)">Naturals</strong>, \(\mathbb{N}\), are the counting numbers. They are good for counting collections and building patterns.</p>
-          <p class="small">Typical question: can we always subtract? Not inside \(\mathbb{N}\).</p>
+          <p><strong style="color:var(--accent)">Naturals \(\mathbb{N}\)</strong> &mdash; the counting numbers 1, 2, 3, &hellip;</p>
+          <p class="small">We can add and multiply, but subtraction sometimes fails. The equation</p>
+          <div class="eq-motiv">\(x + 3 = 1\)</div>
+          <p class="small">has no solution in \(\mathbb{N}\). We need negatives.</p>
         </div>
         <div id="int" class="tab-panel">
-          <p><strong style="color:var(--accent)">Integers</strong>, \(\mathbb{Z}\), add negative numbers and zero. Now subtraction becomes far more natural.</p>
-          <p class="small">We have extended the system so that more equations can be solved.</p>
+          <p><strong style="color:var(--accent)">Integers \(\mathbb{Z}\)</strong> &mdash; &hellip;, &minus;2, &minus;1, 0, 1, 2, &hellip;</p>
+          <p class="small">Now subtraction always works. But the equation</p>
+          <div class="eq-motiv">\(3x = 1\)</div>
+          <p class="small">has no solution in \(\mathbb{Z}\). We need fractions.</p>
         </div>
         <div id="rat" class="tab-panel">
-          <p><strong style="color:var(--accent)">Rationals</strong>, \(\mathbb{Q}\), are numbers of the form \(p/q\) with \(q\neq 0\). Fractions let division work much more often.</p>
-          <p class="small">These are still built from integer data, but the rules become more flexible.</p>
+          <p><strong style="color:var(--accent)">Rationals \(\mathbb{Q}\)</strong> &mdash; all \(p/q\) with \(q\neq 0\).</p>
+          <p class="small">Division (by non-zero) always works. But the equation</p>
+          <div class="eq-motiv">\(x^2 - 2 = 0\)</div>
+          <p class="small">has no rational solution. We need irrational numbers.</p>
         </div>
         <div id="real" class="tab-panel">
-          <p><strong style="color:var(--accent)">Reals</strong>, \(\mathbb{R}\), include limits, decimal expansions, roots like \(\sqrt{2}\), and values defined by infinite processes.</p>
-          <p class="small">This is where infinite series and functions like \(\zeta(s)\) start to matter.</p>
+          <p><strong style="color:var(--accent)">Reals \(\mathbb{R}\)</strong> &mdash; the complete number line.</p>
+          <p class="small">Now \(x^2=2\) is solved by \(\sqrt{2}\). But the equation</p>
+          <div class="eq-motiv">\(x^2 + 1 = 0\)</div>
+          <p class="small">has no real solution. We need imaginary numbers.</p>
+        </div>
+        <div id="cplx" class="tab-panel">
+          <p><strong style="color:var(--accent)">Complex numbers \(\mathbb{C}\)</strong> &mdash; all \(a + bi\) where \(i^2 = -1\).</p>
+          <p class="small">Now \(x^2+1=0\) has solutions \(\pm i\). In fact, every polynomial equation has a root here (the Fundamental Theorem of Algebra). We can restrict to integer parts&hellip;</p>
+        </div>
+        <div id="gauss" class="tab-panel">
+          <p><strong style="color:var(--accent)">Gaussian integers \(\mathbb{Z}[i]\)</strong> &mdash; all \(a + bi\) with \(a,b\in\mathbb{Z}\).</p>
+          <p class="small">These form a lattice in the complex plane. They have their own primes: for example, 5 is no longer prime because \(5 = (2+i)(2-i)\). The norm \(N(a+bi) = a^2+b^2\) governs divisibility.</p>
+        </div>
+        <div id="surd" class="tab-panel">
+          <p><strong style="color:var(--accent)">Integer-surd extensions \(\mathbb{Z}[\sqrt{d}]\)</strong> &mdash; all \(a + b\sqrt{d}\) with \(a,b\in\mathbb{Z}\).</p>
+          <p class="small">Choose any square-free \(d\). For \(d=-1\) we recover the Gaussian integers. For \(d=2\) we get \(\mathbb{Z}[\sqrt{2}]\), useful in Pell's equation \(x^2 - 2y^2 = 1\). Different choices of \(d\) give rings with very different factorisation behaviour.</p>
         </div>
       </div>
       <div class="card panel laws">
+        <span class="top-line"></span>
         <div class="badge">2 &middot; Core laws</div>
         <h2>Why algebraic laws matter</h2>
         <table>
@@ -396,25 +360,40 @@
     </div>
   </section>
 
-  <!-- ══ 3 & 4 ══ -->
+  <!-- ══ 3 & 4: SERIES + TELESCOPING ══ -->
   <section id="series" class="section">
     <div class="two">
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">3 &middot; Infinite series</div>
         <h2>Even and odd: a surprising asymmetry</h2>
-        <p>The Riemann zeta function is defined by</p>
+        <p>The Riemann zeta function sums inverse powers:</p>
         <p>\[\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.\]</p>
-        <p>At <strong style="color:var(--accent)">even</strong> positive integers, Euler found exact closed forms. The simplest is the Basel result:</p>
-        <p>\[\zeta(2)=\frac{\pi^2}{6}.\]</p>
-        <p>Every even value \(\zeta(2n)\) turns out to be a rational multiple of \(\pi^{2n}\). The Bernoulli numbers supply the rational part. \(\pi\) supplies the transcendental part. We will see this bridge in section 10.</p>
-        <p>At <strong style="color:var(--coral)">odd</strong> positive integers the situation is quite different. Ap&eacute;ry proved in 1978 that \(\zeta(3)\) is irrational, but no closed form in terms of \(\pi\) is known. The odd zeta-values remain largely mysterious.</p>
-        <div class="quote">An infinite sum of rational terms can land on a rational multiple of \(\pi^{2n}\) or on something we barely understand, depending on whether the exponent is even or odd.</div>
+        <p>Something remarkable happens at the <strong style="color:var(--accent)">even</strong> positive integers: Euler found exact closed forms, always a rational multiple of a power of \(\pi\). The <strong style="color:var(--coral)">odd</strong> values remain mysterious.</p>
+
+        <div class="eo-grid">
+          <div class="eo-card">
+            <h3 style="color:var(--accent)">Even (closed forms)</h3>
+            <div class="eo-val">\(\zeta(2)=\dfrac{\pi^2}{6}\approx 1.6449\)</div>
+            <div class="eo-val">\(\zeta(4)=\dfrac{\pi^4}{90}\approx 1.0823\)</div>
+            <div class="eo-val">\(\zeta(6)=\dfrac{\pi^6}{945}\approx 1.0173\)</div>
+            <p class="small" style="margin-top:8px">Every \(\zeta(2n)\) is a rational multiple of \(\pi^{2n}\). Section 10 shows the bridge.</p>
+          </div>
+          <div class="eo-card">
+            <h3 style="color:var(--coral)">Odd (no known &pi;-formula)</h3>
+            <div class="eo-val">\(\zeta(3)\approx 1.2021\) <span class="small">&mdash; Ap&eacute;ry&rsquo;s constant</span></div>
+            <div class="eo-val">\(\zeta(5)\approx 1.0369\)</div>
+            <div class="eo-val">\(\zeta(7)\approx 1.0083\)</div>
+            <p class="small" style="margin-top:8px">Ap&eacute;ry proved \(\zeta(3)\) is irrational (1978). No closed form in terms of \(\pi\) is known for any odd value.</p>
+          </div>
+        </div>
       </div>
 
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">4 &middot; Telescoping demo</div>
         <h2>Cancellation in a finite series</h2>
-        <p>Move the slider to choose \(n\). The method of differences makes cancellation visible.</p>
+        <p>Move the slider to choose \(n\).</p>
         <div class="slider-wrap">
           <label for="nSlider"><strong style="color:var(--accent)">Choose \(n\):</strong> <span id="nLabel">6</span></label>
           <input id="nSlider" type="range" min="2" max="20" value="6" />
@@ -425,62 +404,64 @@
     </div>
   </section>
 
-  <!-- ══ 5 ══ -->
+  <!-- ══ 5: STRUCTURES ══ -->
   <section id="structures" class="section">
     <div class="card panel">
+      <span class="top-line"></span>
       <div class="badge">5 &middot; Structures</div>
       <h2>From school algebra to monoids and groups</h2>
-      <p>At school, we usually learn rules one topic at a time. Undergraduate algebra asks: <em>which collections of objects satisfy which rules?</em></p>
+      <p>Undergraduate algebra asks: <em>which collections of objects satisfy which rules?</em></p>
       <div class="three" style="margin-top:14px">
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Semigroup</h3>
           <p>An operation that is <strong>associative</strong>.</p>
-          <p class="small">Combining any three objects gives the same result no matter how we bracket.</p>
+          <p class="small">Bracketing doesn't matter.</p>
         </div>
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Monoid</h3>
           <p>A semigroup with an <strong>identity</strong>.</p>
-          <p class="small">Integers under multiplication: 1 leaves values unchanged.</p>
+          <p class="small">Integers under &times;, with identity 1.</p>
         </div>
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Group</h3>
-          <p>A monoid where every element has an <strong>inverse</strong>.</p>
-          <p class="small">Integers under addition: every \(a\) has inverse \(-a\).</p>
+          <p>A monoid with <strong>inverses</strong>.</p>
+          <p class="small">Integers under +: inverse of \(a\) is \(-a\).</p>
         </div>
       </div>
       <div class="three" style="margin-top:16px">
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Abelian group</h3>
-          <p>A group where the operation also <strong>commutes</strong>.</p>
-          <p class="small">Example: \((\mathbb{Z},+)\) and \((\mathbb{R},+)\).</p>
+          <p>A group that also <strong>commutes</strong>.</p>
+          <p class="small">\((\mathbb{Z},+)\) and \((\mathbb{R},+)\).</p>
         </div>
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Ring</h3>
           <p>Two operations tied by distributivity.</p>
-          <p class="small">Addition forms an abelian group; multiplication is associative.</p>
+          <p class="small">+ forms an abelian group; &times; is associative.</p>
         </div>
-        <div class="mini card">
+        <div class="mini card"><span class="top-line"></span>
           <h3>Field</h3>
-          <p>A ring where non-zero elements have multiplicative inverses.</p>
-          <p class="small">Example: \(\mathbb{Q},\;\mathbb{R},\;\mathbb{C}\).</p>
+          <p>Non-zero elements have &times;-inverses.</p>
+          <p class="small">\(\mathbb{Q},\;\mathbb{R},\;\mathbb{C}\).</p>
         </div>
       </div>
     </div>
 
     <div class="two">
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">6 &middot; Sort the examples</div>
         <h2>Click to reveal the structure</h2>
         <div class="stepper">
           <div class="step">
             <strong>Integers under addition</strong>
             <button onclick="toggleReveal('r1')">Reveal</button>
-            <div id="r1" class="reveal"><strong style="color:var(--accent)">Abelian group</strong>: associative, identity 0, every integer has additive inverse, order does not matter.</div>
+            <div id="r1" class="reveal"><strong style="color:var(--accent)">Abelian group</strong>: associative, identity 0, inverses exist, order doesn't matter.</div>
           </div>
           <div class="step">
             <strong>Integers under multiplication</strong>
             <button onclick="toggleReveal('r2')">Reveal</button>
-            <div id="r2" class="reveal"><strong style="color:var(--accent)">Monoid</strong>: associative, identity 1, but most integers lack multiplicative inverses in \(\mathbb{Z}\).</div>
+            <div id="r2" class="reveal"><strong style="color:var(--accent)">Monoid</strong>: associative, identity 1, but most integers lack &times;-inverses in \(\mathbb{Z}\).</div>
           </div>
           <div class="step">
             <strong>Real numbers under addition</strong>
@@ -496,12 +477,13 @@
       </div>
 
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">7 &middot; Concrete examples</div>
         <h2>The same set, different structures</h2>
-        <p>The structure depends on which operation we attach. Four cases that make the distinctions tangible.</p>
+        <p>The structure depends on which operation we attach.</p>
         <div class="example-item">
           <strong>Positive integers under &times;</strong>
-          <div class="ex-detail">Associative, identity 1, but no inverses: there is no positive integer \(n\) with \(3n=1\). A <strong style="color:var(--accent)">monoid</strong>.</div>
+          <div class="ex-detail">Associative, identity 1, but no inverses: \(3n=1\) has no positive integer solution. A <strong style="color:var(--accent)">monoid</strong>.</div>
         </div>
         <div class="example-item">
           <strong>Rotations of an equilateral triangle</strong>
@@ -509,20 +491,21 @@
         </div>
         <div class="example-item">
           <strong>2&times;2 real matrices under &times;</strong>
-          <div class="ex-detail">Associative with identity \(I\), but \(AB\neq BA\) in general and not every matrix is invertible. A non-commutative <strong style="color:var(--accent)">monoid</strong>.</div>
+          <div class="ex-detail">Associative, identity \(I\), but \(AB\neq BA\) and not every matrix is invertible. A non-commutative <strong style="color:var(--accent)">monoid</strong>.</div>
         </div>
         <div class="example-item">
           <strong>Integers mod 5 with + and &times;</strong>
-          <div class="ex-detail">\(\{0,1,2,3,4\}\) with arithmetic mod 5. Every non-zero element has a multiplicative inverse (e.g. \(2\times 3\equiv 1\)). A <strong style="color:var(--accent)">field</strong>, \(\mathbb{F}_5\).</div>
+          <div class="ex-detail">\(\{0,1,2,3,4\}\) mod 5. Every non-zero element has a &times;-inverse (e.g. \(2\times 3\equiv 1\)). A <strong style="color:var(--accent)">field</strong>, \(\mathbb{F}_5\).</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ 8 & 9 ══ -->
+  <!-- ══ 8 & 9: MAPPINGS ══ -->
   <section id="maps" class="section">
     <div class="two">
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">8 &middot; Mapping types</div>
         <h2>Epimorphism, monomorphism, isomorphism&hellip;</h2>
         <p>Use the buttons to switch between mapping types.</p>
@@ -537,11 +520,12 @@
         <p class="small" id="morphismCaption"></p>
       </div>
       <div class="card panel">
+        <span class="top-line"></span>
         <div class="badge">9 &middot; Composition</div>
         <h2>Why morphisms matter</h2>
-        <p>A morphism is a map that respects structure. For groups, a homomorphism \(f\) satisfies</p>
+        <p>A morphism respects structure. For groups, a homomorphism \(f\) satisfies</p>
         <p>\[f(a\star b)=f(a)\diamond f(b).\]</p>
-        <p>The operation in the source is mirrored by the operation in the target.</p>
+        <p>The operation in the source is mirrored in the target.</p>
         <div class="flow">
           <div class="box">object \(X\)</div>
           <div class="arrow">&rarr;</div>
@@ -561,10 +545,11 @@
   <!-- ══ 10 & 11: THE π-BRIDGE ══ -->
   <section id="bridge" class="section">
     <div class="card panel stack">
+      <span class="top-line"></span>
       <div>
         <div class="badge">10 &middot; The &pi;-bridge</div>
         <h2>\(\pi\) as the bridge between zeta-values and Bernoulli numbers</h2>
-        <p>Every even zeta-value factorises into three pieces: a sign, a rational factor built from the Bernoulli number \(B_{2n}\), and a power of \(\pi\). Isolating \(\pi\) as the bridge term:</p>
+        <p>Every even zeta-value splits into a rational factor and a power of \(\pi\):</p>
         <p>\[
           \zeta(2n)\;=\;
           \underbrace{(-1)^{n+1}\,\frac{B_{2n}}{2\,(2n)!}}_{\text{rational}}\;\times\;
@@ -602,10 +587,11 @@
     </div>
 
     <div class="card panel">
+      <span class="top-line"></span>
       <div class="badge">11 &middot; Final reflection</div>
       <h2>What begins as number rules turns into a study of relations</h2>
-      <p>The journey starts with familiar algebraic laws, moves through infinite series and special numbers, and arrives at a broader point: mathematics gains power when it studies structure and the mappings that preserve it. School mathematics often asks us to compute. Higher mathematics asks what sort of thing we are computing <em>in</em>, and what kinds of maps make sense there.</p>
-      <p>The \(\pi\)-bridge is a case in point. Two apparently separate families of numbers turn out to be locked together by a single transcendental constant. The instinct to look for such correspondences between whole systems, rather than isolated formulas, is exactly the instinct that category theory formalises.</p>
+      <p>The journey starts with familiar algebraic laws, moves through infinite series and special numbers, and arrives at a broader point: mathematics gains power when it studies structure and the mappings that preserve it. School mathematics asks us to compute. Higher mathematics asks what sort of thing we are computing <em>in</em>, and what kinds of maps make sense there.</p>
+      <p>The \(\pi\)-bridge is a case in point. Two apparently separate families of numbers turn out to be locked together by a single transcendental constant. The instinct to look for correspondences between whole systems, rather than isolated formulas, is exactly the instinct that category theory formalises.</p>
     </div>
   </section>
 
@@ -627,7 +613,9 @@
       p.querySelectorAll('[data-tab]').forEach(function(b) { b.classList.remove('active'); });
       p.querySelectorAll('.tab-panel').forEach(function(t) { t.classList.remove('active'); });
       btn.classList.add('active');
-      p.querySelector('#' + btn.dataset.tab).classList.add('active');
+      var target = p.querySelector('#' + btn.dataset.tab);
+      if (target) target.classList.add('active');
+      typeset();
     });
   });
 
@@ -654,14 +642,15 @@
     if (n > 6) html += '<div class="step" style="color:var(--muted)">&#8230; continuing to \\(r=' + n + '\\)</div>';
     tSteps.innerHTML = html;
 
+    /* Split result into two lines to avoid horizontal overflow */
     tResult.innerHTML =
       '\\[\\sum_{r=1}^{' + n + '}\\frac{1}{r(r+1)}'
-      + '=\\left(1-\\frac{1}{2}\\right)'
-      + '+\\left(\\frac{1}{2}-\\frac{1}{3}\\right)'
+      + '\\;=\\;\\left(1-\\tfrac{1}{2}\\right)'
+      + '+\\left(\\tfrac{1}{2}-\\tfrac{1}{3}\\right)'
       + '+\\cdots'
-      + '+\\left(\\frac{1}{' + n + '}-\\frac{1}{' + (n+1) + '}\\right)'
-      + '=1-\\frac{1}{' + (n+1) + '}'
-      + '=\\frac{' + n + '}{' + (n+1) + '}\\]';
+      + '+\\left(\\tfrac{1}{' + n + '}-\\tfrac{1}{' + (n+1) + '}\\right)\\]'
+      + '\\[=\\;1-\\frac{1}{' + (n+1) + '}'
+      + '\\;=\\;\\frac{' + n + '}{' + (n+1) + '}\\]';
     typeset();
   }
 
@@ -721,7 +710,7 @@
   /* ══ Morphism diagrams ══ */
   var MD = {
     epi: {
-      caption: 'Epimorphism (surjective): every target element is hit. Multiple source elements can map to the same target.',
+      caption: 'Epimorphism (surjective): every target element is hit.',
       svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="65" ry="55" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="55" ry="45" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
@@ -734,7 +723,7 @@
         + '<text x="370" y="175" text-anchor="middle" font-size="13" fill="#6a9999">target</text></svg>'
     },
     mono: {
-      caption: 'Monomorphism (injective): different source elements stay different. The target may have unhit elements.',
+      caption: 'Monomorphism (injective): different source elements stay different.',
       svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="55" ry="45" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="65" ry="55" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
@@ -746,7 +735,7 @@
         + '<text x="370" y="185" text-anchor="middle" font-size="13" fill="#6a9999">target</text></svg>'
     },
     iso: {
-      caption: 'Isomorphism: bijective and structure-preserving. The two objects are structurally identical.',
+      caption: 'Isomorphism: bijective and structure-preserving. Structurally identical.',
       svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="130" cy="110" rx="60" ry="50" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<ellipse cx="370" cy="110" rx="60" ry="50" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
@@ -759,7 +748,7 @@
         + '<text x="250" y="195" text-anchor="middle" font-size="13" fill="#6a9999">bijection with inverse</text></svg>'
     },
     endo: {
-      caption: 'Endomorphism: a structure-preserving map from an object to itself. Not necessarily invertible.',
+      caption: 'Endomorphism: a structure-preserving map from an object to itself.',
       svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="250" cy="110" rx="80" ry="60" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="220" cy="90" r="6" fill="#00dca0"/><circle cx="220" cy="130" r="6" fill="#00dca0"/><circle cx="280" cy="110" r="6" fill="#00b8d4"/>'
@@ -769,7 +758,7 @@
         + '<text x="415" y="80" font-size="13" fill="#6a9999">self-map</text></svg>'
     },
     auto: {
-      caption: 'Automorphism: a bijective endomorphism. A reversible symmetry of the object with itself.',
+      caption: 'Automorphism: a bijective endomorphism. A reversible self-symmetry.',
       svg: '<svg viewBox="0 0 500 220" width="100%">'
         + '<ellipse cx="250" cy="110" rx="80" ry="60" fill="none" stroke="#6a9999" stroke-width="1.5"/>'
         + '<circle cx="220" cy="85" r="6" fill="#00dca0"/><circle cx="220" cy="135" r="6" fill="#00dca0"/>'
@@ -786,7 +775,6 @@
   var mBox = document.getElementById('morphismBox');
   var mCap = document.getElementById('morphismCaption');
   var mBtns = document.querySelectorAll('#morphismButtons button');
-
   function setMap(k) {
     mBtns.forEach(function(b) { b.classList.toggle('active', b.dataset.map === k); });
     mBox.innerHTML = MD[k].svg;
